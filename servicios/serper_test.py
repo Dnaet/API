@@ -1,12 +1,7 @@
 import requests
 
 def buscar_en_serper(consulta):
-    """
-    Realiza una búsqueda en la API de Serper y devuelve los resultados.
-
-    :param consulta: Término de búsqueda.
-    :return: Diccionario con los resultados de la búsqueda o un mensaje de error.
-    """
+   
     url = "https://google.serper.dev/search"
     
     # Encabezados requeridos para la autenticación
