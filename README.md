@@ -1,5 +1,5 @@
 # API 
 # librerias
-# pip install requests cryptography
+# pip install requests
 # pip install fernet
 # pip install cryptography
