@@ -1,3 +1,0 @@
-#crear direccion url
-
-#consulta 
