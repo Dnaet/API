@@ -1,6 +1,6 @@
 from auxiliares.constante import PHOTOS_ENDPOINT
 from servicios.servicio_url import respuesta_api
-from modelos.photo import Photo  # Importa la clase Photo
+from modelos.photo import Photo  
 import requests
 
 photos_list = []
