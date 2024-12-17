@@ -80,44 +80,7 @@ def guardar_photo(photo):
             cursor.close()
             conexion.close()
 
-
-def obtener_album_por_id(album_id):
-    
-    conexion = generar_conexion()
-    if conexion:
-        cursor = conexion.cursor(dictionary=True)
-        try:
-            #SELECT
-            query = "SELECT * FROM albums WHERE album_id = %s"
-            cursor.execute(query, (album_id,))  # ejecuta consulta id
-            album = cursor.fetchone()  # respuesta con resultado 
-            return album
-        except Error as e:
-            print(f"Error al obtener el álbum: {e}")
-            return None
-        finally:
-            cursor.close()
-            conexion.close()
-            
-def obtener_photo_por_id(photo_id):
-
-    conexion = generar_conexion()
-    if conexion:
-        cursor = conexion.cursor(dictionary=True)
-        try:
-            #SELECT
-            query = "SELECT * FROM photos WHERE photo_id = %s"
-            cursor.execute(query, (photo_id,))  # consula id
-            photo = cursor.fetchone()  # repuesta 
-            return photo
-        except Error as e:
-            print(f"Error al obtener la foto: {e}")
-            return None
-        finally:
-            cursor.close()
-            conexion.close()
-            
-            
+#Test para limpiar 
 def limpiar_tablas():
   
     conexion = generar_conexion()

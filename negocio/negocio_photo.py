@@ -1,0 +1,1 @@
+# print de lista photo si alcanzo

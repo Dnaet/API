@@ -1,11 +1,13 @@
 from auxiliares.constante import  ALBUMS_ENDPOINT
 from servicios.servicio_url import respuesta_api
 from modelos.album import Album  # importante para eva //clases//
-
+import requests
 
 albums_list = []
 
-def obtener_albunes():
+#GET
+
+def obtener_albunes_get():
     
     url=(ALBUMS_ENDPOINT)
     data_album=respuesta_api(ALBUMS_ENDPOINT)
@@ -24,12 +26,12 @@ def obtener_albunes():
     
     
     print(f"Se obtuvieron {len(albums_list)} álbumes. Aquí un resumen de los primeros 5:")
-    for album in albums_list[:5]: # Print algunos datos para una consulta mas facil y asi pruebo que funciono
+    for album in albums_list[:5]: # Print() algunos datos para una consulta mas facil y asi pruebo que funciono
         print(album)
 
     return albums_list
 
-def obtener_album_por_id(album_id):
+def consulta_album_por_id(album_id):
   
     # busqueda por id en la lista
     global albums_list
@@ -41,3 +43,27 @@ def obtener_album_por_id(album_id):
         print(f"No se encontró un álbum con el ID {album_id}.")
     
     return album
+
+
+#POST
+
+def crear_album_post(album):
+    
+    try:
+        url = ALBUMS_ENDPOINT  
+        
+        data = {
+            "userId": album.user_id,
+            "title": album.title
+        }
+        # Realizar la solicitud POST
+        response = requests.post(url, json=data)
+
+        # Validar la respuesta
+        if response.status_code == 201:  # Código 201: Recurso creado
+            print(f"Álbum creado exitosamente: {response.json()}")
+            return response.json()  # Devuelve la respuesta JSON
+        else:
+            print(f"Error al crear el álbum: {response.status_code} - {response.reason}")
+    except requests.RequestException as e:
+        print(f"Excepción al realizar la solicitud POST: {e}")
