@@ -4,15 +4,18 @@ from auxiliares.constante import HOST as host
 from auxiliares.constante import PASSWORD as contra
 from auxiliares.constante import USER as usuario
 from auxiliares.constante import DATABASE as bd
+
+
+
 def generar_conexion():
     
     #consulta conexion
     try:
         conexion = mysql.connector.connect(
-            host =          host,       # no olvidar tiene que ser localhost
-            user =          usuario,            # ..
-            password=       contra,            # tengo que hacer esto
-            database=       bd          # nombre de la base de datos
+            host =          'localhost',       # no olvidar tiene que ser localhost
+            user =         'root',           # ..
+            password=       '',            # tengo que hacer esto
+            database=       'api'          # nombre de la base de datos
         )
         if conexion.is_connected():
             print("Conexión exitosa a la base de datos")
