@@ -2,7 +2,7 @@
 CREATE TABLE IF NOT EXISTS albums (
     id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT,
-    album_id INT UNIQUE,  
+    album_id INT UNIQUE
 );
 
 CREATE TABLE IF NOT EXISTS photos (
