@@ -3,7 +3,7 @@ from mysql.connector import Error
 from auxiliares.constante import HOST as host
 from auxiliares.constante import PASSWORD as contra
 from auxiliares.constante import USER as usuario
-from auxiliares.constante import BASEDATA as bd
+from auxiliares.constante import DATABASE as bd
 def generar_conexion():
     
     #consulta conexion
