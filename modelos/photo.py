@@ -9,5 +9,5 @@ class Photo(Album):
         self.url = url
         self.thumbnail_url = thumbnail_url
 
-    def __repr__(self):  # mejora para facilitar la depuración
+    def __repr__(self):  #mas facil leer el objeto con la depuraion
         return f"Photo(id={self.photo_id}, title={self.title}, album_id={self.album_id})"

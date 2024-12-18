@@ -1,16 +1,18 @@
 import mysql.connector
 from mysql.connector import Error
-from auxiliares.constante import HOST,USER,PASSWORD,DATABASE 
-
+from auxiliares.constante import HOST as host
+from auxiliares.constante import PASSWORD as contra
+from auxiliares.constante import USER as usuario
+from auxiliares.constante import BASEDATA as bd
 def generar_conexion():
     
     #consulta conexion
     try:
         conexion = mysql.connector.connect(
-            host =          HOST,       # no olvidar tiene que ser localhost
-            user =          USER,            # ..
-            password=       PASSWORD,            # tengo que hacer esto
-            database=       DATABASE          # nombre de la base de datos
+            host =          host,       # no olvidar tiene que ser localhost
+            user =          usuario,            # ..
+            password=       contra,            # tengo que hacer esto
+            database=       bd          # nombre de la base de datos
         )
         if conexion.is_connected():
             print("Conexión exitosa a la base de datos")
