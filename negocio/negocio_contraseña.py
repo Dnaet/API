@@ -39,7 +39,7 @@ def verificar_clave():
     fernet = Fernet(clave)
     contraseña_desencriptada = fernet.decrypt(contraseña_encriptada).decode()
 
-    # compara
+    # compara con lo ingresado
     contraseña_usuario = input("Introduce la contraseña: ")
 
     if contraseña_usuario == contraseña_desencriptada:

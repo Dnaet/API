@@ -2,6 +2,7 @@ from auxiliares.constante import  ALBUMS_ENDPOINT
 from servicios.servicio_url import respuesta_api
 from modelos.album import Album  # importante para eva //clases//
 import requests
+import json
 
 albums_list = []
 
@@ -9,7 +10,7 @@ albums_list = []
 
 def obtener_albunes_get():
     
-    url=(ALBUMS_ENDPOINT)
+    
     data_album=respuesta_api(ALBUMS_ENDPOINT)
 
     #test si recibe datos //Depurar
@@ -31,39 +32,71 @@ def obtener_albunes_get():
 
     return albums_list
 
-def consulta_album_por_id(album_id):
-  
-    # busqueda por id en la lista
-    global albums_list
-    album = next((album for album in albums_list if album.album_id == album_id), None)
-
-    if album:
-        print(f"Álbum encontrado: {album}")
-    else:
-        print(f"No se encontró un álbum con el ID {album_id}.")
-    
-    return album
-
-
 #POST
 
 def crear_album_post(album):
     
     try:
-        url = ALBUMS_ENDPOINT  
+        url = ALBUMS_ENDPOINT 
         
         data = {
             "userId": album.user_id,
             "title": album.title
         }
-        # Realizar la solicitud POST
-        response = requests.post(url, json=data)
+                       
+                        # solicitud
+        
+        #json.dumps convierte cualquier set de datos en JSON
+        response = requests.post(url, json.dumps(data.__dict__))
 
-        # Validar la respuesta
-        if response.status_code == 201:  # Código 201: Recurso creado
+        # respuesta
+        if response.status_code == 201:  # 201="creado"
             print(f"Álbum creado exitosamente: {response.json()}")
             return response.json()  # Devuelve la respuesta JSON
         else:
             print(f"Error al crear el álbum: {response.status_code} - {response.reason}")
+    except requests.RequestException as e:
+        print(f"Excepción al realizar la solicitud POST: {e}")
+             
+#PUT
+
+def actualizar_album_post(album):
+    
+    try:
+        url = f"{ALBUMS_ENDPOINT}/{album.album_id}"
+        
+        data = {
+            "userId": album.user_id,
+            "title": album.title
+        }
+        # solicitud
+        #json.dumps convierte cualquier set de datos en JSON
+        response = requests.put(url, json.dumps(data.__dict__))
+
+        # respuesta
+        if response.status_code == 201:  # 201="creado"
+            print(f"Álbum actualizado exitosamente:")
+            return response.json()  # Devuelve la respuesta JSON
+        else:
+            print(f"Error al crear el álbum: {response.status_code} - {response.reason}")
+    except requests.RequestException as e:
+        print(f"Excepción al realizar la solicitud POST: {e}")    
+        
+#DELETE
+
+def actualizar_album_post(album):
+    
+    try:
+        url = f"{ALBUMS_ENDPOINT}/{album.album_id}"
+         
+        # solicitud
+        #json.dumps convierte cualquier set de datos en JSON
+        response = requests.delete(url)
+
+        # respuesta
+        if response.status_code == 200:  
+            print(f"Álbum eliminado exitosamente: {response.json()}")
+        else:
+            print(f"Error al eliminar el álbum: {response.status_code} - {response.reason}")
     except requests.RequestException as e:
         print(f"Excepción al realizar la solicitud POST: {e}")

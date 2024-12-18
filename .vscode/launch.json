@@ -1,5 +1,5 @@
 {
-    // Use IntelliSense para saber los atributos posibles. as
+    // Use IntelliSense para saber los atributos posibles.
     // Mantenga el puntero para ver las descripciones de los existentes atributos.
     // Para más información, visite: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
@@ -7,7 +7,7 @@
         
         {
             "name": "Depurador de Python: Archivo actual con argumentos",
-            "type": "python",
+            "type": "debugpy",
             "request": "launch",
             "program": "${file}",
             "console": "integratedTerminal",
